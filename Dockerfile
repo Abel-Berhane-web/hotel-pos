@@ -19,8 +19,5 @@ COPY . .
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev
 
-# Create database file
-RUN touch database/database.sqlite
-
-# Run migrations and start server
-CMD php artisan migrate:fresh --seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+# Run server
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
